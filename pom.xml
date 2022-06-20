@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xing</groupId>
+    <artifactId>xingbili-coding</artifactId>
+    <packaging>pom</packaging>
+    <name>xingbili-coding</name>
+    <description>根POM</description>
+    <modules>
+        <module>question-service</module>
+        <module>java8-demo</module>
+    </modules>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <skipTests>true</skipTests>
+        <spring-boot.version>2.6.6</spring-boot.version>
+        <lambok.version>1.18.22</lambok.version>
+        <build.plugins.plugin.version>2.6.6</build.plugins.plugin.version>
+    </properties>
+    <!--许可管理-->
+    <licenses>
+        <!--      <license>-->
+        <!--        -->
+        <!--      </license>-->
+    </licenses>
+    <!--开发人员-->
+    <developers>
+        <developer>
+            <name>xinghuolin</name>
+            <email>xinghuolin@qq.com</email>
+            <!--            <organization>Pivotal Software, Inc.</organization>-->
+            <!--            <organizationUrl>https://www.spring.io</organizationUrl>-->
+        </developer>
+    </developers>
+
+    <!--代码仓库信息-->
+    <scm>
+        <!--        <url></url>-->
+        <!--        <connection></connection>-->
+        <!--        <developerConnection></developerConnection>-->
+        <!--        <tag></tag>-->
+    </scm>
+
+    <!--依赖继承管理，以此为父工程的项目，无需自己添加依赖会自动使用此处的依赖-->
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lambok.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!--版本管理，子项目版本统一管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <!--build插件配置-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${build.plugins.plugin.version}</version>
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <!--私服配置-->
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>nexus</id>-->
+    <!--            <url>http://10.30.4.51:8081/nexus/content/groups/public</url>-->
+    <!--            <releases>-->
+    <!--                <enabled>true</enabled>-->
+    <!--            </releases>-->
+    <!--            <snapshots>-->
+    <!--                <enabled>true</enabled>-->
+    <!--                <updatePolicy>always</updatePolicy>-->
+    <!--            </snapshots>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
+
+    <!-- 安装部署至私服上：mvn clean install -Dmaven.test.skip=true deploy -->
+    <!--    <distributionManagement>-->
+    <!--        <repository>-->
+    <!--            <id>releases</id>-->
+    <!--            <url>http://10.30.4.51:8081/nexus/content/repositories/releases</url>-->
+    <!--        </repository>-->
+    <!--        <snapshotRepository>-->
+    <!--            <id>snapshots</id>-->
+    <!--            <url>http://10.30.4.51:8081/nexus/content/repositories/snapshots</url>-->
+    <!--        </snapshotRepository>-->
+    <!--    </distributionManagement>-->
+
+</project>
